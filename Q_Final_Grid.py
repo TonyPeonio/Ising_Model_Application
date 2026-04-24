@@ -42,6 +42,11 @@ nx.draw_networkx_edges(G, pos, edge_color='gray', alpha=0.5, ax=ax)
 # Draw Edge Labels (the weights)
 edge_labels = nx.get_edge_attributes(G, 'weight')
 
+print("[")
+for edge in G.edges(data=True):
+    print(f"({edge[0]}, {edge[1]}, {edge[2]['weight']}),")
+print("]")
+
 #UNCOMMENT THE LINE BELOW TO PRINT WITH EDGE LABELS
 #VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 #nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels, font_size=7, ax=ax)
