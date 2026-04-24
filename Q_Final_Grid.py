@@ -22,7 +22,7 @@ pos = {
     17: (-4, 2), 18: (-3, 3), 19: (-3, 1)
 }
 
-# 3. Create Graph and calculate weights based on distance
+# Create Graph and calculate weights based on distance
 G = nx.Graph()
 for u, v in edge_list:
     x1, y1 = pos[u]
@@ -31,7 +31,7 @@ for u, v in edge_list:
     distance = math.sqrt((x2 - x1)**2 + (y2 - y1)**2)
     G.add_edge(u, v, weight=round(distance, 2))
 
-# 4. Setup Plot
+# Setup Plot
 fig, ax = plt.subplots(figsize=(12, 10))
 
 # Draw Nodes and Edges
@@ -46,7 +46,7 @@ edge_labels = nx.get_edge_attributes(G, 'weight')
 #VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 #nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels, font_size=7, ax=ax)
 
-# 5. Grid and Axis Formatting
+# Grid and Axis Formatting
 ax.set_axis_on()
 ax.tick_params(left=True, bottom=True, labelleft=True, labelbottom=True)
 ax.xaxis.set_major_locator(ticker.MultipleLocator(1))
