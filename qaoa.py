@@ -113,9 +113,11 @@ def main():
     circuit = QAOAAnsatz(cost_operator=cost_hamiltonian, reps=2)
     backend = QasmSimulator()
 
+    #transpile the circuit such that it has a hardware config, add the cost hamiltonian to it
     candidate_circuit = transpile(circuit, backend=backend, optimization_level=3)
     isa_hamiltonian = cost_hamiltonian.apply_layout(candidate_circuit.layout)
 
+    #These were found with pain
     initial_gamma = 0.7025
     initial_beta = 1.9635
     init_params = [ initial_beta, initial_beta,  initial_gamma,  initial_gamma]
