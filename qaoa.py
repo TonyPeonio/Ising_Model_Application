@@ -17,7 +17,7 @@ from qiskit.transpiler.preset_passmanagers import generate_preset_pass_manager
 from qiskit_aer import QasmSimulator
 from qiskit_aer.primitives import EstimatorV2 as Estimator
 
-GRAPHS = False
+GRAPHS = True
 
 def evaluate_sample(division: Sequence[int], graph: rx.PyGraph) -> float:
     assert len(division) == len(
@@ -221,16 +221,16 @@ def main():
     print(f"The value of the cut is: {cut_value:.3f}")
 
 
-'''
-    if GRAPHS: circuit.draw("mpl")
 
-    if GRAPHS: draw_graph(graph, node_size=600, with_labels=True)
+    # if GRAPHS: circuit.draw("mpl")
+
+    # if GRAPHS: draw_graph(graph, node_size=600, with_labels=True)
 
     plt.figure(figsize=(11, 6))
     plt.plot(objective_func_vals)
     plt.xlabel("Iteration")
     plt.ylabel("Cost")
-    if GRAPHS: plt.show()
+    if GRAPHS: plt.savefig("cost_convergence.png")
     #print(objective_func_vals)
 
     matplotlib.rcParams.update({"font.size": 10})
@@ -258,19 +258,11 @@ def main():
     # No x tick labels
     ax.set_xticks([])
 
-    if GRAPHS: plt.show()
+    # if GRAPHS: plt.savefig("result_distribution.png")
 
-    if GRAPHS: optimized_circuit.draw("mpl", fold=False, idle_wires=False)
-'''
+    # if GRAPHS: optimized_circuit.savefig("optimized_circuit.png")
 
+    # if GRAPHS: optimized_circuit.draw("mpl", fold=False, idle_wires=False)
 
 if __name__ == "__main__":
     main()
-
-
-
-
-
-
-
-
